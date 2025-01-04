@@ -31,6 +31,9 @@ let gameState = ['', '', '', '', '', '', '', '', ''];
 
 let isGameActive = true;
 
+// It is an array containing multiple smaller arrays.
+// Contents: Each smaller array represents a winning combination of indices for a Tic Tac Toe game.
+
 const winningConditions = [
   [0, 1, 2],
   [3, 4, 5],
@@ -43,13 +46,47 @@ const winningConditions = [
 ];
 
 // Initialize the board
+// The createBoard function is responsible for dynamically creating the Tic Tac Toe game board in the browser. 
 function createBoard() {
+
+  // Clears any previous board content (resets the board visually).
+
   board.innerHTML = '';
+
+  // The forEach method loops through each cell in the gameState array.
+  // cell: The current value at that index (e.g., '', 'X', or 'O').
+  // index: The position of the current cell (e.g., 0, 1, 2,...).
+
   gameState.forEach((cell, index) => {
+
+  // Dynamically creates a <div> for each cell in the game board.
+
     const cellDiv = document.createElement('div');
+
+    // Adds the class cell to the newly created <div>.
+
     cellDiv.classList.add('cell');
+
+    // Adds a custom data-index attribute to the <div> (e.g., <div data-index="0"></div>).
+    // Why?: This helps identify which cell is clicked, so we know which position in the gameState array to update.
+
+//     The dataset property is a way to manage custom data attributes (data-*) in HTML.
+// These attributes allow you to store extra information directly in the HTML element.
+// data-index is a custom attribute being added to each cellDiv. It holds the value of index
+// It assigns the index value (from 0 to 8) to the data-index attribute of the cell.
+// cellDiv.dataset.index = 0 adds a data-index="0" attribute to the <div>
+    
+
     cellDiv.dataset.index = index;
+
+    // Attaches an event listener to each cell to handle clicks. 
+    // What happens when clicked?:
+    // When a cell is clicked, the handleCellClick function is triggered.
+
     cellDiv.addEventListener('click', handleCellClick);
+
+    // Adds the newly created <div> (cell) to the <div id="board">.
+
     board.appendChild(cellDiv);
   });
 }
