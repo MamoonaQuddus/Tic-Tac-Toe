@@ -119,15 +119,39 @@ function checkWin() {
   );
 }
 
+// This function resets the game to its initial state, preparing it for a new round of Tic-Tac-Toe.
+
 // Reset the game
 function resetGame() {
+
+  // Sets all 9 cells in the gameState array to empty strings (''), which means no moves have been made.
+
   gameState = ['', '', '', '', '', '', '', '', ''];
+
+  // Resets the starting player to "X".
+
   currentPlayer = 'X';
+
+// Re-enables gameplay by setting isGameActive to true.
+// Why it's needed: Prevents the game from being stuck in a finished state.
+
   isGameActive = true;
+
+  // Updates the status message to indicate that it's Player X's turn.
+
   statusText.textContent = `Player X's turn`;
+
+  // Calls the createBoard() function to redraw the board.
+
   createBoard();
 }
 
+// This connection between the button and the resetGame function ensures 
+// that the user can reset the game anytime by simply clicking the "Reset Game" button.
+
 // Initialize the game
 resetButton.addEventListener('click', resetGame);
+
+// Calls the createBoard() function to redraw the board.
+
 createBoard();
