@@ -114,7 +114,21 @@ function handleCellClick(event) {
 }
 // Check for a win or draw
 function checkWin() {
+
+  // some()
+  // What it does: Checks if at least one condition in the winningConditions array is satisfied.
+  // How it works: Loops through each condition and applies the callback function
+
   return winningConditions.some(condition => 
+
+    // every()
+    // What it does: Checks if all elements in the current condition array satisfy a certain condition.
+    // gameState[index] is the content of the cell at the given index.
+// It verifies if all cells in the current condition array are equal to currentPlayer (e.g., "X" or "O").
+// If one of the conditions satisfies the win criteria, some() immediately returns true otherwise false
+// The index corresponds to the position in the gameState array:
+// index = 0: Refers to the first cell in gameState..
+
     condition.every(index => gameState[index] === currentPlayer)
   );
 }
